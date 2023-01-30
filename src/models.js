@@ -1,4 +1,3 @@
-
 if (process.env.NODE_ENV !== 'PROD') {
 	require('dotenv').config();
 }
@@ -46,4 +45,4 @@ personSchema.set('toJSON', {
 
 // create a model
 
-module.exports = mongoose.model('Person', personSchema);;
+module.exports = mongoose.model('Person', personSchema);

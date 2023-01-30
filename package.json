@@ -10,7 +10,8 @@
     "build:ui": "rm -rf dist && cd ../frontend && npm run build && cp -r dist ../backend",
     "deploy": "git add . && git commit -m 'deploy' && git push",
     "deploy:new": "npm run build:ui && npm run deploy",
-    "debug": "node --inspect ."
+    "debug": "node --inspect .",
+    "lint": "npx eslint ."
   },
   "keywords": [],
   "author": "",
@@ -22,6 +23,7 @@
   },
   "devDependencies": {
     "dotenv": "^16.0.3",
+    "eslint": "^8.33.0",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.20"
   }

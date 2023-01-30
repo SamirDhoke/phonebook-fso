@@ -3,7 +3,7 @@ const cors = require('cors');
 const utils = require('./utils.js');
 const Person = require('./models.js');
 const mainRouter = require('./routes/main.js');
-const data = require('./data.js');
+// const data = require('./data.js');
 
 const bodyParser = express.json();
 
@@ -40,7 +40,7 @@ app.get('/info', async (req, res, next) => {
 
 app.use(utils.unknownRoute)
 app.use(utils.errorHandler)
-app.use((error, req, res, next) => {
+app.use((error, req, res) => {
 	// only internal server error handler
 	res.status(500).json({
 		error: 'Internal server error'

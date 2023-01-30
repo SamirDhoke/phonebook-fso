@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const Person = require('../models.js');
-const data = require('../data.js');
+// const data = require('../data.js');
 
 router.get('/persons', (req, res, next) => {
 	// res.json(data.getAll());
@@ -44,7 +44,11 @@ router.delete('/persons/:id', (req, res, next) => {
   Person
     .findByIdAndRemove(id)
     .then(result => {
-      res.status(204).end();
+      if (result) {
+        res.status(204).end();  
+      } else {
+        next()
+      }
     })
     // .catch(e => res.status(500).end())
     .catch(e => next(e))

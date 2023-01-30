@@ -1,14 +1,18 @@
 const morgan = require('morgan');
 
+// this is how you register a custom token.
 morgan.token('response-body', function (req, res) {
 	return JSON.stringify(req.body)
 })
 
+// this is how you create a logger with a template of HOW IT WILL LOG.
 const logger = morgan(':method :url :status :res[content-length] - :response-time ms :response-body');
 
-const unknownRoute = (req, res, next) => {
+
+const unknownRoute = (req, res) => {
 	res.status(404).send('route not found');
 }
+
 
 const errorHandler = (error, req, res, next) => {
 	console.log(error.name, error.message);
