@@ -1,4 +1,8 @@
-require('dotenv').config();
+
+if (process.env.NODE_ENV !== 'PROD') {
+	require('dotenv').config();
+}
+
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 
@@ -16,7 +20,7 @@ mongoose
 const personSchema = new Schema({
 	name: {
 		type: String,
-		minLength: 3,
+		minLength: [3, 'The name must be at least 3 characters long.'],
 		required: [true, 'User name is required']
 	},
 	number: {
